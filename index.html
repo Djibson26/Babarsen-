@@ -1,0 +1,1838 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Babarsen FC - Discipline. Formation. Ambition.</title>
+    <meta name="description" content="Club de football malien fondé en 2022. Formation de jeunes talents et équipe en 2e division.">
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        /* Variables CSS */
+        :root {
+            --red-primary: #DC2626;
+            --red-dark: #B91C1C;
+            --black: #000000;
+            --white: #FFFFFF;
+            --gray-50: #F9FAFB;
+            --gray-100: #F3F4F6;
+            --gray-200: #E5E7EB;
+            --gray-300: #D1D5DB;
+            --gray-400: #9CA3AF;
+            --gray-500: #6B7280;
+            --gray-600: #4B5563;
+            --gray-700: #374151;
+            --gray-800: #1F2937;
+            --gray-900: #111827;
+        }
+
+        /* Utilitaires */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+
+        .btn-primary {
+            background-color: var(--red-primary);
+            color: var(--white);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--red-dark);
+            transform: translateY(-2px);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            color: var(--red-primary);
+            border: 2px solid var(--red-primary);
+        }
+
+        .btn-outline:hover {
+            background-color: var(--red-primary);
+            color: var(--white);
+        }
+
+        .btn-lg {
+            padding: 1rem 2rem;
+            font-size: 1.125rem;
+        }
+
+        .card {
+            background: var(--white);
+            border-radius: 0.75rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .card:hover {
+            box-shadow: 0 10px 25px -3px rgba(0, 0, 0, 0.1);
+            transform: translateY(-5px);
+        }
+
+        .card-header {
+            padding: 1.5rem;
+            border-bottom: 1px solid var(--gray-200);
+        }
+
+        .card-content {
+            padding: 1.5rem;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            font-size: 0.875rem;
+            font-weight: 500;
+            border-radius: 9999px;
+            background-color: var(--gray-100);
+            color: var(--gray-700);
+        }
+
+        .badge-primary {
+            background-color: var(--red-primary);
+            color: var(--white);
+        }
+
+        /* Logo styles */
+        .logo-img {
+            width: 100%;
+            height: 70%;
+            object-fit: contain;
+            border-radius: 50%;
+        }
+
+        .hero-logo-img {
+            width: 100%;
+            height: 70%;
+            object-fit: contain;
+        }
+
+        /* Header */
+        .header {
+            background: var(--white);
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        .header.scrolled {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+        }
+
+        .header-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1rem 0;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .logo-icon {
+            width: 4rem;
+            height: 4rem;
+            background: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-size: 1.5rem;
+            overflow: hidden;
+        }
+
+        .logo-text h1 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--red-primary);
+            margin: 0;
+        }
+
+        .logo-text p {
+            font-size: 0.75rem;
+            color: var(--gray-600);
+            margin: 0;
+        }
+
+        .nav {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav a {
+            color: var(--gray-700);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav a:hover {
+            color: var(--red-primary);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--gray-700);
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('images/hero-bg.jpg');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--white);
+            position: relative;
+        }
+
+        /* Fallback si l'image n'est pas disponible */
+        .hero.no-image {
+            background: linear-gradient(135deg, var(--red-primary), var(--red-dark));
+        }
+
+        .hero-content {
+            max-width: 800px;
+            padding: 0 1rem;
+        }
+        
+        
+        .hero-logo {
+            width: 6rem;
+            height: 6rem;
+            background: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 4rem auto 2rem;
+            font-size: 3rem;
+            overflow: hidden;
+        }
+
+        .hero h1 {
+            font-size: clamp(3rem, 8vw, 7rem);
+            font-weight: 900;
+            margin-bottom: 1rem;
+            letter-spacing: -0.02em;
+        }
+
+        .hero-subtitle {
+            font-size: clamp(1.25rem, 3vw, 2rem);
+            margin-bottom: 2rem;
+            color: #EF4444;
+            font-weight: 600;
+        }
+
+        /* Sections */
+        .section {
+            padding: 5rem 0;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--red-primary);
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .grid {
+            display: grid;
+            gap: 2rem;
+        }
+
+        .grid-2 {
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        }
+
+        .grid-3 {
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        }
+
+        /* Histoire Section */
+        .histoire {
+            background: var(--white);
+        }
+
+        .histoire-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .histoire-text {
+            text-align: left;
+        }
+
+        .histoire-text p {
+            font-size: 1.125rem;
+            color: var(--gray-700);
+            margin-bottom: 1.5rem;
+        }
+
+        .stats {
+            display: flex;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--red-primary);
+        }
+
+        .stat-label {
+            font-size: 0.875rem;
+            color: var(--gray-600);
+        }
+
+        .histoire-image {
+            position: relative;
+            border-radius: 0.75rem;
+            overflow: hidden;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .histoire-image img {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+        }
+
+        /* Image placeholder fallback */
+        .image-placeholder {
+            width: 100%;
+            height: 400px;
+            background: linear-gradient(45deg, var(--red-primary), var(--red-dark));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 4rem;
+        }
+
+        /* Équipes Section */
+        .equipes {
+            background: var(--gray-50);
+        }
+
+        .team-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .team-card {
+            background: var(--white);
+            border-radius: 0.75rem;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .team-header {
+            padding: 1.5rem;
+            color: var(--white);
+        }
+
+        .team-header.premiere {
+            background: var(--red-primary);
+        }
+
+        .team-header.formation {
+            background: var(--black);
+        }
+
+        .team-title {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .team-subtitle {
+            opacity: 0.8;
+        }
+
+        .player-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .player-card {
+            text-align: center;
+            padding: 2rem 1rem;
+        }
+
+        .player-avatar {
+            width: 5rem;
+            height: 5rem;
+            background: var(--gray-200);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+            font-size: 2rem;
+            color: var(--gray-400);
+            overflow: hidden;
+        }
+
+        .player-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .player-name {
+            font-weight: 600;
+            font-size: 1.125rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .player-info {
+            color: var(--gray-600);
+            margin-bottom: 0.5rem;
+        }
+
+        /* Infrastructures */
+        .infrastructures {
+            background: var(--white);
+        }
+
+        .infra-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .infra-card {
+            border: 2px solid #FEE2E2;
+        }
+
+        .infra-title {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--red-primary);
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .infra-image {
+            width: 100%;
+            height: 200px;
+            background: var(--gray-200);
+            border-radius: 0.5rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: var(--gray-400);
+            overflow: hidden;
+        }
+
+        .infra-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .excellence-box {
+            background: var(--gray-50);
+            border-radius: 0.75rem;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .excellence-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--red-primary);
+            margin-bottom: 1rem;
+        }
+
+        .excellence-text {
+            font-size: 1.125rem;
+            color: var(--gray-700);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* Médias */
+        .medias {
+            background: var(--gray-50);
+        }
+
+        .media-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .media-card {
+            background: var(--white);
+            border-radius: 0.75rem;
+            overflow: hidden;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .media-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .media-image {
+            position: relative;
+            height: 200px;
+            background: var(--gray-200);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: var(--gray-400);
+            overflow: hidden;
+        }
+
+        .media-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .media-overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            color: var(--white);
+            font-size: 3rem;
+        }
+
+        .media-card:hover .media-overlay {
+            opacity: 1;
+        }
+
+        .media-badge {
+            position: absolute;
+            top: 0.5rem;
+            right: 0.5rem;
+            background: var(--red-primary);
+            color: var(--white);
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            font-weight: 500;
+        }
+
+        .media-content {
+            padding: 1rem;
+        }
+
+        .media-title {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .media-date {
+            font-size: 0.875rem;
+            color: var(--gray-600);
+        }
+
+        /* Actualités */
+        .actualites {
+            background: var(--white);
+        }
+
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .news-card {
+            background: var(--white);
+            border-radius: 0.75rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .news-card:hover {
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+            transform: translateY(-3px);
+        }
+
+        .news-header {
+            padding: 1.5rem;
+            border-bottom: 1px solid var(--gray-200);
+        }
+
+        .news-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .news-title {
+            font-size: 1.125rem;
+            font-weight: 600;
+            color: var(--gray-900);
+        }
+
+        .news-content {
+            padding: 1.5rem;
+        }
+
+        .news-excerpt {
+            color: var(--gray-700);
+            margin-bottom: 1rem;
+        }
+
+        .news-link {
+            color: var(--red-primary);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .news-link:hover {
+            text-decoration: underline;
+        }
+
+        /* Staff */
+        .staff {
+            background: var(--gray-50);
+        }
+
+        .president-card {
+            background: var(--white);
+            border-radius: 0.75rem;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .president-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 2rem;
+            text-align: center;
+        }
+
+        .president-avatar {
+            width: 8rem;
+            height: 8rem;
+            background: var(--gray-200);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            color: var(--gray-400);
+            overflow: hidden;
+        }
+
+        .president-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .president-info h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--red-primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .president-role {
+            font-size: 1.125rem;
+            color: var(--gray-600);
+            margin-bottom: 1rem;
+        }
+
+        .president-bio {
+            color: var(--gray-700);
+            line-height: 1.7;
+        }
+
+        .staff-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .philosophy-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .philosophy-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 0.75rem;
+            color: var(--gray-700);
+        }
+
+        .philosophy-icon {
+            color: var(--red-primary);
+        }
+
+        /* Contact */
+        .contact {
+            background: var(--white);
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-label {
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+            color: var(--gray-700);
+        }
+
+        .form-input,
+        .form-textarea {
+            padding: 0.75rem;
+            border: 2px solid var(--gray-200);
+            border-radius: 0.5rem;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-input:focus,
+        .form-textarea:focus {
+            outline: none;
+            border-color: var(--red-primary);
+        }
+
+        .form-textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+        }
+
+        .contact-icon {
+            color: var(--red-primary);
+            font-size: 1.5rem;
+            margin-top: 0.25rem;
+        }
+
+        .contact-details h4 {
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+        }
+
+        .contact-details p,
+        .contact-details a {
+            color: var(--gray-700);
+            text-decoration: none;
+        }
+
+        .contact-details a:hover {
+            color: var(--red-primary);
+        }
+
+        .schedule-box {
+            background: var(--gray-50);
+            border-radius: 0.75rem;
+            padding: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .schedule-title {
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .schedule-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+            font-size: 0.875rem;
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--black);
+            color: var(--white);
+            padding: 3rem 0;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h4 {
+            color: #EF4444;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .footer-links {
+            list-style: none;
+            padding: 0;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-links a {
+            color: var(--gray-400);
+            text-decoration: none;
+            font-size: 0.875rem;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--white);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .social-link {
+            color: var(--gray-400);
+            font-size: 1.5rem;
+            transition: color 0.3s ease;
+        }
+
+        .social-link:hover {
+            color: var(--white);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid var(--gray-800);
+            padding-top: 2rem;
+            text-align: center;
+            color: var(--gray-400);
+            font-size: 0.875rem;
+        }
+
+        .footer-bottom a {
+            color: var(--gray-400);
+            text-decoration: none;
+        }
+
+        .footer-bottom a:hover {
+            color: var(--white);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav {
+                display: none;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .hero h1 {
+                font-size: 3rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1.25rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .histoire-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .stats {
+                justify-content: center;
+            }
+
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .president-content {
+                flex-direction: column;
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in-up {
+            animation: fadeInUp 0.6s ease-out;
+        }
+
+        /* Smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Loading animation */
+        .loading {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            border-top-color: var(--white);
+            animation: spin 1s ease-in-out infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* Image error handling */
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .image-error {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header" id="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <div class="logo-icon">
+                        <!-- Logo du club - Remplacez le chemin par votre logo -->
+                        <img src="images/logo/babarsen-logo.jpg" alt="Babarsen FC Logo" class="logo-img" 
+                             onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <i class="fas fa-shield-alt image-error"></i>
+                    </div>
+                    <div class="logo-text">
+                        <h1>Babarsen FC</h1>
+                        <p>Fondé en 2022</p>
+                    </div>
+                </div>
+                <nav class="nav">
+                    <a href="#histoire">Histoire</a>
+                    <a href="#equipes">Équipes</a>
+                    <a href="#infrastructures">Infrastructures</a>
+                    <a href="#actualites">Actualités</a>
+                    <a href="#contact">Contact</a>
+                </nav>
+                <button class="mobile-menu-btn" id="mobileMenuBtn">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="heroSection">
+        <div class="hero-content">
+            <div class="hero-logo">
+                <!-- Logo du club dans le hero -->
+                <img src="images/logo/babarsen-logo.jpg" alt="Babarsen FC Logo" class="hero-logo-img"
+                     onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                <i class="fas fa-shield-alt image-error"></i>
+            </div>
+            <h1>BABARSEN FC</h1>
+            <p class="hero-subtitle">Discipline. Formation. Ambition.</p>
+            <a href="#histoire" class="btn btn-primary btn-lg">Découvrir notre histoire</a>
+        </div>
+    </section>
+
+    <!-- Notre Histoire -->
+    <section id="histoire" class="section histoire">
+        <div class="container">
+            <h2 class="section-title">Notre Histoire</h2>
+            <div class="histoire-content">
+                <div class="histoire-text">
+                    <p>
+                        Fondé en 2022 à Bamako, Mali, Babarsen FC est né d'une vision ambitieuse : former des joueurs
+                        professionnels tout en développant des hommes responsables et disciplinés.
+                    </p>
+                    <p>
+                        En seulement trois ans, notre club a réussi sa montée en 2ᵉ division malienne, témoignant de notre
+                        engagement envers l'excellence sportive et la formation de qualité.
+                    </p>
+                    <p>
+                        Notre académie accueille des jeunes talents de tout le Mali, leur offrant un cadre éducatif complet
+                        alliant sport de haut niveau et formation scolaire.
+                    </p>
+                    <div class="stats">
+                        <div class="stat">
+                            <div class="stat-number">2022</div>
+                            <div class="stat-label">Fondation</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-number">2ᵉ</div>
+                            <div class="stat-label">Division</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-number">50+</div>
+                            <div class="stat-label">Jeunes formés</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="histoire-image">
+                    <!-- Image d'histoire du club -->
+                    <img src="images/club/histoire-club.jpg" alt="Histoire du club Babarsen FC"
+                         onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <div class="image-placeholder image-error">
+                        <i class="fas fa-futbol"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Nos Équipes -->
+    <section id="equipes" class="section equipes">
+        <div class="container">
+            <h2 class="section-title">Nos Équipes</h2>
+            
+            <div class="team-cards">
+                <div class="team-card">
+                    <div class="team-header premiere">
+                        <div class="team-title">
+                            <i class="fas fa-trophy"></i>
+                            Équipe Première
+                        </div>
+                        <div class="team-subtitle">2ᵉ Division Malienne</div>
+                    </div>
+                    <div class="card-content">
+                        <p>
+                            Notre équipe première évolue en 2ᵉ division du championnat malien. Composée de joueurs expérimentés et
+                            de jeunes talents issus de notre académie.
+                        </p>
+                        <div style="margin-top: 1rem;">
+                            <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                                <span>Joueurs actifs:</span>
+                                <span style="font-weight: 600;">25</span>
+                            </div>
+                            <div style="display: flex; justify-content: space-between;">
+                                <span>Âge moyen:</span>
+                                <span style="font-weight: 600;">23 ans</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="team-card">
+                    <div class="team-header formation">
+                        <div class="team-title">
+                            <i class="fas fa-graduation-cap"></i>
+                            Jeunes en Formation
+                        </div>
+                        <div class="team-subtitle">Académie U12 à U20</div>
+                    </div>
+                    <div class="card-content">
+                        <p>
+                            Notre académie forme les futurs talents du football malien dans un environnement professionnel alliant
+                            sport et éducation.
+                        </p>
+                        <div style="margin-top: 1rem;">
+                            <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                                <span>Jeunes formés:</span>
+                                <span style="font-weight: 600;">50+</span>
+                            </div>
+                            <div style="display: flex; justify-content: space-between;">
+                                <span>Catégories:</span>
+                                <span style="font-weight: 600;">U12 à U20</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Joueurs vedettes -->
+            <div class="player-cards">
+                <div class="card player-card">
+                    <div class="player-avatar">
+                        <!-- Photo du joueur Amadou Traoré -->
+                        <img src="images/joueurs/chakour.jpg" alt="Al Chakour"
+                             onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <i class="fas fa-user image-error"></i>
+                    </div>
+                    <h3 class="player-name">Al Chakour</h3>
+                    <p class="player-info">Milieu</p>
+                    <span class="badge badge-primary">Première</span>
+                </div>
+                <div class="card player-card">
+                    <div class="player-avatar">
+                        <!-- Photo du joueur Ibrahim Keita -->
+                        <img src="images/joueurs/ibrahim-keita.jpg" alt="Ibrahim Keita"
+                             onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <i class="fas fa-user image-error"></i>
+                    </div>
+                    <h3 class="player-name">Ibrahim Keita</h3>
+                    <p class="player-info">Milieu • 19 ans</p>
+                    <span class="badge">Formation</span>
+                </div>
+                <div class="card player-card">
+                    <div class="player-avatar">
+                        <!-- Photo du joueur Sekou Diarra -->
+                        <img src="images/joueurs/sekou-diarra.jpg" alt="Sekou Diarra"
+                             onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <i class="fas fa-user image-error"></i>
+                    </div>
+                    <h3 class="player-name">Sekou Diarra</h3>
+                    <p class="player-info">Défenseur • 26 ans</p>
+                    <span class="badge badge-primary">Première</span>
+                </div>
+            </div>
+
+            <div style="text-align: center;">
+                <a href="#" class="btn btn-outline">Voir tous les joueurs</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Infrastructures -->
+    <section id="infrastructures" class="section infrastructures">
+        <div class="container">
+            <h2 class="section-title">Nos Infrastructures</h2>
+
+            <div class="infra-cards">
+                <div class="card infra-card">
+                    <div class="card-content">
+                        <div class="infra-title">
+                            <i class="fas fa-home"></i>
+                            Dortoir
+                        </div>
+                        <div class="infra-image">
+                            <!-- Photo du dortoir -->
+                            <img src="images/infrastructures/dortoir.jpg" alt="Dortoir Babarsen FC"
+                                 onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                            <i class="fas fa-bed image-error"></i>
+                        </div>
+                        <p>
+                            Hébergement moderne pour nos jeunes pensionnaires avec chambres confortables et espaces communs.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="card infra-card">
+                    <div class="card-content">
+                        <div class="infra-title">
+                            <i class="fas fa-graduation-cap"></i>
+                            École
+                        </div>
+                        <div class="infra-image">
+                            <!-- Photo de l'école -->
+                            <img src="images/infrastructures/ecole.jpg" alt="École Babarsen FC"
+                                 onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                            <i class="fas fa-chalkboard-teacher image-error"></i>
+                        </div>
+                        <p>
+                            Salles de classe équipées pour assurer la continuité scolaire de nos jeunes footballeurs.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="card infra-card">
+                    <div class="card-content">
+                        <div class="infra-title">
+                            <i class="fas fa-bullseye"></i>
+                            Terrain
+                        </div>
+                        <div class="infra-image">
+                            <!-- Photo du terrain -->
+                            <img src="images/infrastructures/terrain.jpg" alt="Terrain Babarsen FC"
+                                 onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                            <i class="fas fa-futbol image-error"></i>
+                        </div>
+                        <p>
+                            Terrain d'entraînement aux normes avec éclairage pour les séances en soirée.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="excellence-box">
+                <h3 class="excellence-title">Un Cadre d'Excellence</h3>
+                <p class="excellence-text">
+                    Nos infrastructures modernes offrent un environnement propice au développement sportif et personnel de nos
+                    joueurs. La discipline et l'excellence sont au cœur de notre approche éducative, créant les conditions
+                    idéales pour révéler les talents.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Médias -->
+    <section class="section medias">
+        <div class="container">
+            <h2 class="section-title">Médias</h2>
+
+            <div class="media-grid">
+                
+                 <div class="media-card">
+                    <div class="media-image">
+                        <!-- Photo de l'equipe premiare -->
+                        <img src="images/medias/equipe-A.jpg" alt="Journée d'entraînement"
+                             onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <i class="fas fa-camera image-error"></i>
+                        <div class="media-overlay">
+                            <i class="fas fa-camera"></i>
+                        </div>
+                        <div class="media-badge">Photo</div>
+                    </div>
+                    <div class="media-content">
+                        <h3 class="media-title">Equipe première</h3>
+                        <p class="media-date"></p>
+                    </div>
+                </div>
+
+                <div class="media-card">
+                    <div class="media-image">
+                        <!-- Photo d'entraînement -->
+                        <img src="images/medias/entrainement-1.jpg" alt="Journée d'entraînement"
+                             onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <i class="fas fa-camera image-error"></i>
+                        <div class="media-overlay">
+                            <i class="fas fa-camera"></i>
+                        </div>
+                        <div class="media-badge">Photo</div>
+                    </div>
+                    <div class="media-content">
+                        <h3 class="media-title">Journée d'entraînement</h3>
+                        <p class="media-date">15 Jan 2025</p>
+                    </div>
+                </div>
+
+                <div class="media-card">
+                    <div class="media-image">
+                        <!-- Vidéo du match -->
+                        <img src="images/medias/match-highlights.jpg" alt="Moments forts du dernier match"
+                             onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <i class="fas fa-video image-error"></i>
+                        <div class="media-overlay">
+                            <i class="fas fa-play"></i>
+                        </div>
+                        <div class="media-badge">Photo</div>
+                    </div>
+                    <div class="media-content">
+                        <h3 class="media-title">Moments forts du dernier match</h3>
+                        <p class="media-date">12 Jan 2025</p>
+                    </div>
+                </div>
+
+                <div class="media-card">
+                    <div class="media-image">
+                        <!-- Photo de la vie au club -->
+                        <img src="images/medias/vie-club.jpg" alt="Vie au club - Dortoir"
+                             onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <i class="fas fa-camera image-error"></i>
+                        <div class="media-overlay">
+                            <i class="fas fa-camera"></i>
+                        </div>
+                        <div class="media-badge">Photo</div>
+                    </div>
+                    <div class="media-content">
+                        <h3 class="media-title">Vie au club - Dortoir</h3>
+                        <p class="media-date">10 Jan 2025</p>
+                    </div>
+                </div>
+
+                <div class="media-card">
+                    <div class="media-image">
+                        <!-- Vidéo interview président -->
+                        <img src="images/medias/interview-president.jpg" alt="Interview du président"
+                             onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <i class="fas fa-video image-error"></i>
+                        <div class="media-overlay">
+                            <i class="fas fa-play"></i>
+                        </div>
+                        <div class="media-badge">Vidéo</div>
+                    </div>
+                    <div class="media-content">
+                        <h3 class="media-title">Interview du président</h3>
+                        <p class="media-date">8 Jan 2025</p>
+                    </div>
+                </div>
+
+                <div class="media-card">
+                    <div class="media-image">
+                        <!-- Photo cérémonie -->
+                        <img src="images/medias/ceremonie-diplomes.jpg" alt="Cérémonie de remise des diplômes"
+                             onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <i class="fas fa-camera image-error"></i>
+                        <div class="media-overlay">
+                            <i class="fas fa-camera"></i>
+                        </div>
+                        <div class="media-badge">Photo</div>
+                    </div>
+                    <div class="media-content">
+                        <h3 class="media-title">Cérémonie de remise des diplômes</h3>
+                        <p class="media-date">5 Jan 2025</p>
+                    </div>
+                </div>
+
+                <div class="media-card">
+                    <div class="media-image">
+                        <!-- Vidéo highlights -->
+                        <img src="images/medias/victoire-3-1.jpg" alt="Highlights - Victoire 3-1"
+                             onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <i class="fas fa-video image-error"></i>
+                        <div class="media-overlay">
+                            <i class="fas fa-play"></i>
+                        </div>
+                        <div class="media-badge">Vidéo</div>
+                    </div>
+                    <div class="media-content">
+                        <h3 class="media-title">Highlights - Victoire 3-1</h3>
+                        <p class="media-date">3 Jan 2025</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Actualités -->
+    <section id="actualites" class="section actualites">
+        <div class="container">
+            <h2 class="section-title">Actualités</h2>
+
+            <div class="news-grid">
+                <div class="news-card">
+                    <div class="news-header">
+                        <div class="news-meta">
+                            <span class="badge">Résultat</span>
+                            <span style="font-size: 0.875rem; color: var(--gray-500);">20 Jan 2025</span>
+                        </div>
+                        <h3 class="news-title">Victoire éclatante 4-1 contre l'AS Bamako</h3>
+                    </div>
+                    <div class="news-content">
+                        <p class="news-excerpt">
+                            Une performance remarquable de nos joueurs qui nous rapproche de la montée en 1ère division.
+                        </p>
+                        <a href="#" class="news-link">Lire la suite →</a>
+                    </div>
+                </div>
+
+                <div class="news-card">
+                    <div class="news-header">
+                        <div class="news-meta">
+                            <span class="badge">Partenariat</span>
+                            <span style="font-size: 0.875rem; color: var(--gray-500);">18 Jan 2025</span>
+                        </div>
+                        <h3 class="news-title">Nouveau partenariat avec l'académie française</h3>
+                    </div>
+                    <div class="news-content">
+                        <p class="news-excerpt">
+                            Un accord historique pour l'échange de jeunes talents et le perfectionnement technique.
+                        </p>
+                        <a href="#" class="news-link">Lire la suite →</a>
+                    </div>
+                </div>
+
+                <div class="news-card">
+                    <div class="news-header">
+                        <div class="news-meta">
+                            <span class="badge">Recrutement</span>
+                            <span style="font-size: 0.875rem; color: var(--gray-500);">15 Jan 2025</span>
+                        </div>
+                        <h3 class="news-title">Arrivée de trois nouveaux pensionnaires</h3>
+                    </div>
+                    <div class="news-content">
+                        <p class="news-excerpt">
+                            Trois jeunes talents rejoignent notre académie pour la saison 2025.
+                        </p>
+                        <a href="#" class="news-link">Lire la suite →</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Président & Staff -->
+    <section class="section staff">
+        <div class="container">
+            <h2 class="section-title">Direction & Staff</h2>
+
+            <div style="max-width: 1000px; margin: 0 auto;">
+                <div class="president-card">
+                    <div class="president-content">
+                        <div class="president-avatar">
+                            <!-- Photo du président Baba -->
+                            <img src="images/medias/president-baba.jpg" alt="Président Baba"
+                                 onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                            <i class="fas fa-user-tie image-error"></i>
+                        </div>
+                        <div class="president-info">
+                            <h3>Baba</h3>
+                            <p class="president-role">Président & Fondateur</p>
+                            <p class="president-bio">
+                                Visionnaire et passionné de football, Baba a fondé Babarsen FC avec la conviction que le sport
+                                peut transformer des vies. Sa philosophie de gestion humaine et sportive place l'épanouissement
+                                personnel au cœur de la performance collective.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="staff-grid">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 style="color: var(--red-primary); font-weight: 600;">Staff Technique</h3>
+                        </div>
+                        <div class="card-content">
+                            <p style="color: var(--gray-700); margin-bottom: 1rem;">
+                                Notre équipe d'entraîneurs qualifiés accompagne nos joueurs dans leur développement technique et
+                                tactique.
+                            </p>
+                            <p style="font-size: 0.875rem; color: var(--gray-600);">
+                                Section en cours de mise à jour - Nouvelles recrues à venir
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 style="color: var(--red-primary); font-weight: 600;">Philosophie</h3>
+                        </div>
+                        <div class="card-content">
+                            <ul class="philosophy-list">
+                                <li class="philosophy-item">
+                                    <i class="fas fa-star philosophy-icon"></i>
+                                    <span>Excellence sportive</span>
+                                </li>
+                                <li class="philosophy-item">
+                                    <i class="fas fa-graduation-cap philosophy-icon"></i>
+                                    <span>Formation complète</span>
+                                </li>
+                                <li class="philosophy-item">
+                                    <i class="fas fa-users philosophy-icon"></i>
+                                    <span>Développement humain</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="section contact">
+        <div class="container">
+            <h2 class="section-title">Contact</h2>
+
+            <div class="contact-grid">
+                <div>
+                    <h3 style="font-size: 1.5rem; font-weight: 700; margin-bottom: 1.5rem;">Nous contacter</h3>
+                    <form class="contact-form" id="contactForm">
+                        <div class="form-group">
+                            <label class="form-label">Nom complet</label>
+                            <input type="text" class="form-input" placeholder="Votre nom" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Email</label>
+                            <input type="email" class="form-input" placeholder="votre@email.com" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Message</label>
+                            <textarea class="form-textarea" placeholder="Votre message..." required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary" style="width: 100%;">
+                            <span class="btn-text">Envoyer le message</span>
+                            <span class="loading" style="display: none;"></span>
+                        </button>
+                    </form>
+                </div>
+
+                <div class="contact-info">
+                    <h3 style="font-size: 1.5rem; font-weight: 700; margin-bottom: 1.5rem;">Informations</h3>
+                    
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt contact-icon"></i>
+                        <div class="contact-details">
+                            <h4>Adresse</h4>
+                            <p>Bamako, Mali</p>
+                        </div>
+                    </div>
+
+                    <div class="contact-item">
+                        <i class="fas fa-phone contact-icon"></i>
+                        <div class="contact-details">
+                            <h4>Téléphone</h4>
+                            <p>+223 XX XX XX XX</p>
+                        </div>
+                    </div>
+
+                    <div class="contact-item">
+                        <i class="fas fa-envelope contact-icon"></i>
+                        <div class="contact-details">
+                            <h4>Email</h4>
+                            <p>contact@babarsenfc.ml</p>
+                        </div>
+                    </div>
+
+                    <div class="contact-item">
+                        <i class="fab fa-facebook contact-icon"></i>
+                        <div class="contact-details">
+                            <h4>Facebook</h4>
+                            <a href="#">@BabarsenFC</a>
+                        </div>
+                    </div>
+
+                    <div class="schedule-box">
+                        <h4 class="schedule-title">Horaires d'entraînement</h4>
+                        <div class="schedule-item">
+                            <span>Lundi - Vendredi:</span>
+                            <span>16h00 - 18h00</span>
+                        </div>
+                        <div class="schedule-item">
+                            <span>Samedi:</span>
+                            <span>09h00 - 11h00</span>
+                        </div>
+                        <div class="schedule-item">
+                            <span>Dimanche:</span>
+                            <span>Match ou repos</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-section">
+                    <div class="logo" style="margin-bottom: 1rem;">
+                        <div class="logo-icon">
+                            <!-- Logo du club dans le footer -->
+                            <img src="images/logo/babarsen-logo.jpg" alt="Babarsen FC Logo" class="logo-img"
+                                 onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                            <i class="fas fa-shield-alt image-error"></i>
+                        </div>
+                        <div class="logo-text">
+                            <h1 style="color: #EF4444;">Babarsen FC</h1>
+                            <p style="color: var(--gray-400);">Depuis 2022</p>
+                        </div>
+                    </div>
+                    <p style="color: var(--gray-400); font-size: 0.875rem;">Discipline. Formation. Ambition.</p>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Navigation</h4>
+                    <ul class="footer-links">
+                        <li><a href="#histoire">Notre Histoire</a></li>
+                        <li><a href="#equipes">Nos Équipes</a></li>
+                        <li><a href="#infrastructures">Infrastructures</a></li>
+                        <li><a href="#actualites">Actualités</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Contact</h4>
+                    <ul class="footer-links">
+                        <li>Bamako, Mali</li>
+                        <li>+223 XX XX XX XX</li>
+                        <li>contact@babarsenfc.ml</li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Réseaux Sociaux</h4>
+                    <div class="social-links">
+                        <a href="#" class="social-link">
+                            <i class="fab fa-facebook"></i>
+                        </a>
+                        <a href="#" class="social-link">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>
+                    © 2025 Babarsen FC. Tous droits réservés. |
+                    <a href="#">Mentions légales</a> |
+                    <a href="#">Politique de confidentialité</a>
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Gestion des images avec fallback
+        function handleImageError(img) {
+            img.style.display = 'none';
+            const fallback = img.nextElementSibling;
+            if (fallback && fallback.classList.contains('image-error')) {
+                fallback.style.display = 'flex';
+            }
+        }
+
+        // Initialisation de l'image de fond du hero
+        function initHeroBackground() {
+            const heroSection = document.getElementById('heroSection');
+            const heroImage = new Image();
+            heroImage.onload = function() {
+                heroSection.style.backgroundImage = `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('images/hero-bg.jpg')`;
+            };
+            heroImage.onerror = function() {
+                heroSection.classList.add('no-image');
+            };
+            heroImage.src = 'images/hero-bg.jpg';
+        }
+
+        // Header scroll effect
+        window.addEventListener('scroll', function() {
+            const header = document.getElementById('header');
+            if (window.scrollY > 100) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    const headerHeight = document.getElementById('header').offsetHeight;
+                    const targetPosition = target.offsetTop - headerHeight;
+                    
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Contact form handling
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const button = this.querySelector('button[type="submit"]');
+            const btnText = button.querySelector('.btn-text');
+            const loading = button.querySelector('.loading');
+            
+            // Show loading state
+            btnText.style.display = 'none';
+            loading.style.display = 'inline-block';
+            button.disabled = true;
+            
+            // Simulate form submission
+            setTimeout(() => {
+                // Reset button state
+                btnText.style.display = 'inline';
+                loading.style.display = 'none';
+                button.disabled = false;
+                
+                // Show success message
+                alert('Message envoyé avec succès! Nous vous répondrons bientôt.');
+                
+                // Reset form
+                this.reset();
+            }, 2000);
+        });
+
+        // Mobile menu toggle
+        document.getElementById('mobileMenuBtn').addEventListener('click', function() {
+            const nav = document.querySelector('.nav');
+            if (nav.style.display === 'flex') {
+                nav.style.display = 'none';
+            } else {
+                nav.style.display = 'flex';
+                nav.style.flexDirection = 'column';
+                nav.style.position = 'absolute';
+                nav.style.top = '100%';
+                nav.style.left = '0';
+                nav.style.right = '0';
+                nav.style.background = 'white';
+                nav.style.padding = '1rem';
+                nav.style.boxShadow = '0 4px 6px rgba(0, 0, 0, 0.1)';
+            }
+        });
+
+        // Animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('fade-in-up');
+                }
+            });
+        }, observerOptions);
+
+        // Observe elements for animation
+        document.querySelectorAll('.card, .section-title, .hero-content').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Media card interactions
+        document.querySelectorAll('.media-card').forEach(card => {
+            card.addEventListener('click', function() {
+                const title = this.querySelector('.media-title').textContent;
+                const type = this.querySelector('.media-badge').textContent;
+                alert(`Ouverture de: ${title} (${type})`);
+            });
+        });
+
+        // News card interactions
+        document.querySelectorAll('.news-link').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const title = this.closest('.news-car
+                e.preventDefault();
+                const title = this.closest('.news-card').querySelector('.news-title').textContent;
+                alert(`Ouverture de l'article: ${title}`);
+            });
+        });
+
+        // Player cards hover effect
+        document.querySelectorAll('.player-card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-10px)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0)';
+            });
+        });
+
+        // Initialize page
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize hero background
+            initHeroBackground();
+            
+            // Add initial animations
+            setTimeout(() => {
+                document.querySelector('.hero-content').classList.add('fade-in-up');
+            }, 500);
+            
+            console.log('Babarsen FC - Site web chargé avec succès!');
+        });
+    </script>
+</body>
+</html>
